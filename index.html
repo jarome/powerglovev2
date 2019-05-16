@@ -2,23 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Power Glove Audio</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="image_src" href="http://www.powergloveaudio.com/images/pg_image.png" / >
+
+    <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/icons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/icons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/icons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/icons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/icons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/icons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/icons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+    <link rel="manifest" href="images/icons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="images/icons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
+    <link href="assets/css/vendor/hamburgers/hamburgers.css" rel="stylesheet">
     <link href="assets/css/main.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
-    <style>
-
-
-    </style>
 
 </head>
 <body>
 
 
 
-<div class="header">
+<div class="header hide-for-mobile">
     <div class="logo-container">
         <img class="logo" src="images/PowerGlove_Logo_WHITE.svg" />
     </div>
@@ -28,6 +48,7 @@
 
             <div class="navigation__links">
                 <a href="https://powergloveaudio.bandcamp.com">LISTEN</a>
+                <a href="https://powergloveaudio.bandcamp.com">WATCH</a>
                 <a href="#" class="navigation__links-disabled">MERCH</a>
                 <a href="#">CONTACT</a>
             </div>
@@ -54,24 +75,45 @@
 </div>
 
 <div class="header-mobile hide-for-desktop">
-    <div class="logo-wrapper">
-        <a href="http://www.powergloveaudio.com" class="pg-logo__sml">POWER GLOVE</a>
+
+    <div class="logo-container-mobile">
+        <img class="logo" src="images/PowerGlove_Logo_WHITE.svg" />
     </div>
+
     <div class="hamburger-wrapper">
-        <button class="hamburger hamburger--slider js-hamburger is-active" type="button">
+        <button class="hamburger hamburger--slider js-hamburger" type="button">
 				<span class="hamburger-box">
 					<span class="hamburger-inner"></span>
 				</span>
         </button>
     </div>
 
-    <div class="mobile-navigation js-mobile-navigation" style="display: block;">
-        <ul class="pg-buy-links-mobile">
-            <li><a target="_blank" title="Download Power Glove EPII" href="http://powergloveaudio.bandcamp.com/album/ep-ii" class="highlight">EPII</a></li>
-            <li><a title="Download Power Glove EP1" href="https://itunes.apple.com/us/album/ep-1-ep/id628277532">EPI</a></li>
-            <li><a title="Download Trials of the Blood Dragon" href="https://itunes.apple.com/album/trials-blood-dragon-original/id1112303606">Trials of the Blood Dragon</a></li>
-            <li><a title="Download Far Cry 3: Blood Dragon" href="http://www.amazon.com/gp/product/B00CJLZ9G8?ie=UTF8&amp;tag=i008-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B00CJLZ9G8">Far Cry 3: Blood Dragon</a></li>
+    <div class="mobile-navigation js-mobile-navigation">
+            <ul class="pg-buy-links-mobile">
+            <li><a href="https://powergloveaudio.bandcamp.com">LISTEN</a></li>
+            <li><a href="#" class="navigation__links-disabled">MERCH</a></li>
+            <li><a href="#">CONTACT</a></li>
         </ul>
+    </div>
+</div>
+
+<div class="social-icons-mobile-container hide-for-desktop">
+    <div class="social-icons-mobile">
+        <a href="#">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-soundcloud"></i>
+        </a>
+        <a href="https://powergloveaudio.bandcamp.com">
+            <i class="fab fa-bandcamp"></i>
+        </a>
+        <a href="#">
+            <i class="fab fa-youtube"></i>
+        </a>
     </div>
 </div>
 
@@ -90,19 +132,20 @@
     <source src="videos/PG_looptest.mp4" type="video/mp4">
 </video>
 
+<script src="assets/js/components/useragent.js"></script>
+<script src="assets/js/components/site-nav.js"></script>
+
 <script src="node_modules/video.js/dist/video.js"></script>
 <script src="node_modules/videojs-background/dist/videojs-background.js"></script>
 
 <script>
 
-
-
+    (function() {
         videojs('bg-video').Background();
-        setTimeout(function() {
+        setTimeout(function () {
             videojs('bg-video').Background();
         }, 100);
-
-
+    })();
 
 </script>
 

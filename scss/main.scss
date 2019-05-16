@@ -1,3 +1,11 @@
+/** Vars **/
+
+/**@charset "UTF-8";**/
+@import "reset.css";
+
+$panel-height-mobile: 50px;
+$navigation-item-height-mobile: 60px;
+
 body {
   position:  relative;
   font-family: Arial, sans-serif;
@@ -73,10 +81,12 @@ a {
 .navigation__social a {
   padding: 0 7px;
   cursor: pointer;
+
 }
 
 .navigation__links-disabled {
   text-decoration: line-through;
+  opacity: 0.4;
 }
 
 .navigation__social a:hover, .navigation__links a:hover {
@@ -87,3 +97,39 @@ a {
 .header {
   display: flex;
 }
+
+.social-icons-mobile-container {
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  width: 100%;
+}
+
+.social-icons-mobile {
+  display: flex;
+  justify-content: center;
+  a {
+    margin: 10px 5px;
+  }
+}
+
+.hide-for-desktop {
+  display: none;
+}
+
+/** Mobile **/
+
+@media only screen and (min-width : 320px) and (max-width : 667px) {
+
+  .hide-for-mobile {
+    display: none;
+  }
+
+  .hide-for-desktop {
+    display: block;
+  }
+
+}
+
+
+@import "components/navigation";

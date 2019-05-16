@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var connect = require('gulp-connect');
 var browsersync = require("browser-sync").create();
+var plumber = require("gulp-plumber");
 
 
 var htmlSources = ['**/*.html'];
@@ -31,9 +32,19 @@ function clean() {
 // CSS task
 function css() {
     return gulp
-        .src("scss/*")
+        .src("scss/**/*")
         .pipe(sass({ outputStyle: "expanded" }))
         .pipe(gulp.dest("assets/css"))
+        .pipe(browsersync.stream());
+}
+
+// JS
+function js() {
+    return gulp
+        .src(["js/**/*"])
+        .pipe(plumber())
+        // folder only, filename is specified in webpack config
+        .pipe(gulp.dest("assets/js"))
         .pipe(browsersync.stream());
 }
 
@@ -46,7 +57,8 @@ function copyHtml() {
 
 // Watch files
 function watchFiles() {
-    gulp.watch("scss/*", css);
+    gulp.watch("scss/**/*", css);
+    gulp.watch("js/**/*", js);
     gulp.watch("index.html", copyHtml);
 
     // Tasks
@@ -57,7 +69,7 @@ function watchFiles() {
 
 gulp.task(
     "build",
-    gulp.series(clean, gulp.parallel(css, copyHtml))
+    gulp.series(clean, gulp.parallel(css, copyHtml, js))
 );
 
 // watch
