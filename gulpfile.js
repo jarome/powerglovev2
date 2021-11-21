@@ -1,8 +1,14 @@
 var gulp = require('gulp');
+var rename = require('gulp-rename');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
+var del = require('del');
+var minify = require('gulp-cssnano');
 var connect = require('gulp-connect');
 var browsersync = require("browser-sync").create();
 var plumber = require("gulp-plumber");
+var imagemin = require('gulp-imagemin');
+var uglify = require('gulp-uglify');
 
 
 var htmlSources = ['**/*.html'];
@@ -24,9 +30,9 @@ function browserSyncReload(done) {
     done();
 }
 
-// Clean assets
+// Clean dist
 function clean() {
-    return del(["assets"]);
+    return del(["dist"]);
 }
 
 // CSS task
@@ -34,7 +40,14 @@ function css() {
     return gulp
         .src("scss/**/*")
         .pipe(sass({ outputStyle: "expanded" }))
-        .pipe(gulp.dest("assets/css"))
+        .pipe(gulp.dest("dist/css"))
+        .pipe(minify({
+            discardComments: {
+              removeAll: true
+            }
+        }))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest("dist/css"))
         .pipe(browsersync.stream());
 }
 
@@ -43,22 +56,44 @@ function js() {
     return gulp
         .src(["js/**/*"])
         .pipe(plumber())
+        .pipe(concat('site.js'))
+        .pipe(gulp.dest("dist/js"))
         // folder only, filename is specified in webpack config
-        .pipe(gulp.dest("assets/js"))
+        .pipe(uglify())
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest("dist/js"))
         .pipe(browsersync.stream());
+}
+
+function images() {
+  return gulp
+    .src('images/**/*', { sourcemaps: true })
+    .pipe(imagemin([
+      imagemin.gifsicle({interlaced: true}),
+      imagemin.jpegtran({progressive: true}),
+      imagemin.optipng({optimizationLevel: 5}),
+      imagemin.svgo({
+        plugins: [
+          {removeViewBox: true},
+          {cleanupIDs: false}
+        ]
+      })
+    ]))
+    .pipe(gulp.dest('dist/images/'), { sourcemaps: true })
 }
 
 // CSS task
 function copyHtml() {
     return gulp
         .src("index.html")
-        .pipe(gulp.dest("assets"))
+        .pipe(gulp.dest("dist"))
 }
 
 // Watch files
 function watchFiles() {
     gulp.watch("scss/**/*", css);
     gulp.watch("js/**/*", js);
+    gulp.watch("images/**/*", images);
     gulp.watch("index.html", copyHtml);
 
     // Tasks
@@ -69,7 +104,7 @@ function watchFiles() {
 
 gulp.task(
     "build",
-    gulp.series(clean, gulp.parallel(css, copyHtml, js))
+    gulp.series(clean, gulp.parallel(css, copyHtml, images, js))
 );
 
 // watch

@@ -7,7 +7,19 @@ $navigation-item-height-mobile: 60px;
 
 .header-mobile {
   height: $panel-height-mobile;
-  background: #000;
+  background: transparent;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  font-family: 'Oswald', sans-serif;
+
+  &.fixed-header-mobile {
+    background: linear-gradient(180deg,#000000,transparent);
+  }
+
+  &.expanded {
+    background: #000;
+  }
 }
 
 /** Hamburger **/
@@ -20,7 +32,7 @@ $navigation-item-height-mobile: 60px;
 
 .hamburger-wrapper {
   float: right;
-  padding: 10px 10px 0 0;
+  padding: 7px 10px 0 0;
   .hamburger {
     outline: none;
   }
@@ -30,12 +42,12 @@ $navigation-item-height-mobile: 60px;
   width: 100%;
   height: 100%;
   display: none;
-  background-color: #000000;
+  background: linear-gradient(180deg,#000000,transparent);
   position: fixed;
   top: $panel-height-mobile;
   text-transform: uppercase;
   font-size: 15px;
-
+  z-index: 2;
 
   ul.pg-buy-links-mobile {
     width: 100%;

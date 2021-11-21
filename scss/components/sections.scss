@@ -1,0 +1,119 @@
+@import "../variables.scss";
+
+.listen__cover,
+.store__item {
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 30px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.listen__cover {
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  img {
+    width: 100%;
+    border: 1px solid #222;
+    height: auto;
+  }
+
+  &--soon:before {
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    content: 'Presave';
+    background: $pg-red;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    position: absolute;
+  }
+}
+
+.watch-video {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+}
+
+.watch-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.store__item {
+
+  font-size: 14px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &--swap:hover {
+    opacity: 1;
+  }
+
+
+  img {
+    width: 100%;
+    border: 1px solid #222;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  &--new:before,
+  &--limited-edition:before,
+  &--sold-out:before,
+  &--repress:before {
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 8px 10px;
+    position: absolute;
+    z-index: 2;
+    color: #000;
+  }
+
+  &--new:before {
+    content: 'New';
+    background: $pg-red;
+  }
+
+  &--limited-edition:before {
+    content: 'Limited Edition';
+    background: #c0fc38;
+  }
+
+  &--sold-out {
+    img {
+
+    }
+  }
+
+  &--sold-out:before {
+    content: 'Sold Out';
+    background: $pg-red;
+  }
+
+  &--repress:before {
+    content: 'Repress';
+    background: $pg-red;
+  }
+}
+
+.store__item-info {
+  color: #555;
+  font-size: 12px;
+}
+
+.contact {
+  margin-bottom: 250px;
+}

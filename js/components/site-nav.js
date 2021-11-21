@@ -4,6 +4,7 @@ $(document).ready(function() {
 
   hamburgerEl.click(function () {
 
+    $('.header-mobile').toggleClass('expanded');
     $('.js-mobile-navigation').slideToggle("fast", function () {
       if(!hamburgerEl.hasClass('is-active')) {
         $('.js-hamburger').addClass('is-active');

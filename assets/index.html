@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Power Glove Audio</title>
+    <title>Power Glove</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Power Glove. From the streets of 2043.">
 
-    <link rel="image_src" href="http://www.powergloveaudio.com/images/pg_image.png" / >
+    <link rel="image_src" href="http://www.powergloveaudio.com/images/pg_image.png">
 
     <link rel="apple-touch-icon" sizes="57x57" href="images/icons/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="images/icons/apple-icon-60x60.png">
@@ -28,56 +29,55 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
-    <link href="assets/css/vendor/hamburgers/hamburgers.css" rel="stylesheet">
-    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="dist/css/vendor/hamburgers/hamburgers.css" rel="stylesheet">
+    <link href="dist/css/main.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css?family=Oswald:400,500&display=swap" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149848142-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-149848142-1');
+    </script>
 </head>
 <body>
 
+<header class="header hide-for-mobile">
+    <div class="container flex-it">
+        <div class="logo-container">
+            <a class="js-logo">
+                <img class="logo" src="dist/images/PowerGlove_Logo_OUTLINE.svg" />
+            </a>
+        </div>
 
+        <div class="navigation-container">
+            <div class="navigation">
 
-<div class="header hide-for-mobile">
-    <div class="logo-container">
-        <img class="logo" src="images/PowerGlove_Logo_WHITE.svg" />
-    </div>
+                <div class="navigation__links">
+                    <a href="#store" class="navigation__link--special navigation__link--special">STORE</a>
+                    <a href="#listen">LISTEN</a>
+                    <a href="#watch">WATCH</a>
+                    <a class="js-contact" href="#contact">CONTACT</a>
+                    <span class="volume-mute volume-mute--on animate-flicker" onclick="PG.app.toggleMute()">
+                        <i class="fas fa-volume-mute volume-mute__mute"></i>
+                        <i class="fas fa-volume-up volume-mute__up"></i>
+                    </span>
+                </div>
 
-    <div class="navigation-container">
-        <div class="navigation">
-
-            <div class="navigation__links">
-                <a href="https://powergloveaudio.bandcamp.com">LISTEN</a>
-                <a href="https://powergloveaudio.bandcamp.com">WATCH</a>
-                <a href="#" class="navigation__links-disabled">MERCH</a>
-                <a href="#">CONTACT</a>
-            </div>
-
-            <div class="navigation__social">
-                <a href="#">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-facebook"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-soundcloud"></i>
-                </a>
-                <a href="https://powergloveaudio.bandcamp.com">
-                    <i class="fab fa-bandcamp"></i>
-                </a>
-                <a href="#">
-                    <i class="fab fa-youtube"></i>
-                </a>
             </div>
         </div>
     </div>
-</div>
+</header>
 
 <div class="header-mobile hide-for-desktop">
 
     <div class="logo-container-mobile">
-        <img class="logo" src="images/PowerGlove_Logo_WHITE.svg" />
+        <img class="logo js-logo" src="dist/images/PowerGlove_Logo_WHITE.svg" />
     </div>
 
     <div class="hamburger-wrapper">
@@ -90,64 +90,242 @@
 
     <div class="mobile-navigation js-mobile-navigation">
             <ul class="pg-buy-links-mobile">
-            <li><a href="https://powergloveaudio.bandcamp.com">LISTEN</a></li>
-            <li><a href="#" class="navigation__links-disabled">MERCH</a></li>
-            <li><a href="#">CONTACT</a></li>
+            <li><a href="#store" class="navigation__link--special">STORE</a></li>
+            <li><a href="#listen">LISTEN</a></li>
+            <li><a  href="#watch">WATCH</a></li>
+            <li><a href="#contact">CONTACT</a></li>
         </ul>
     </div>
 </div>
 
-<div class="social-icons-mobile-container hide-for-desktop">
-    <div class="social-icons-mobile">
-        <a href="#">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#">
-            <i class="fab fa-facebook"></i>
-        </a>
-        <a href="#">
-            <i class="fab fa-soundcloud"></i>
-        </a>
-        <a href="https://powergloveaudio.bandcamp.com">
-            <i class="fab fa-bandcamp"></i>
-        </a>
-        <a href="#">
-            <i class="fab fa-youtube"></i>
-        </a>
-    </div>
-</div>
 
-<video id="bg-video"
-       class="video-js vjs-default-skin"
-       style="position:absolute;top:0;left:0;overflow:hidden;z-index:-998;"
-       height="100%"
-       muted="muted"
-       width="100%"
-       poster=""
-       loop >
+<section class="section video-hero">
+<video id="video" class="js-video video-element" muted autoplay loop playsinline>
 
     <p>
         Your browser doesn't support video. Please <a href="http://browsehappy.com/">upgrade your browser</a> to see the example.
     </p>
-    <source src="videos/PG_looptest.mp4" type="video/mp4">
+    <source src="videos/TB_Teaser_WEBSITEg.mp4" type="video/mp4">
 </video>
+</section>
 
-<script src="assets/js/components/useragent.js"></script>
-<script src="assets/js/components/site-nav.js"></script>
+<!-- START Store -->
+<section id="store" class="section store">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="heading-tag">Store</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-6 store__item store__item--swap store__item--limited-edition">
+                <a  href="https://ffm.to/throwback" target="_blank">
+                    <figure class="swap-on-hover">
+                    <img class="swap-on-hover__front" src="dist/images/store/throwback-vinyl.jpeg" />
+                    <img class="swap-on-hover__back" src="dist/images/store/throwback-vinyl-back.jpeg" />
+                    </figure>
+                </a>
+                <div class="store__item-info">
+                    'Throwback' Limited Edition Glow in the Dark vinyl.<br/>
+                    Includes spooky 12"x18" movie poster insert
+                </div>
+            </div>
 
-<script src="node_modules/video.js/dist/video.js"></script>
-<script src="node_modules/videojs-background/dist/videojs-background.js"></script>
+            <div class="col-12 col-lg-6 store__item store__item--swap">
+                <a href="https://ffm.to/throwback" target="_blank">
+                    <figure class="swap-on-hover">
+                        <img class="swap-on-hover__front" src="dist/images/store/throwback-lstee.jpeg" />
+                        <img class="swap-on-hover__back" src="dist/images/store/throwback-lstee-back.jpeg" />
 
-<script>
+                    </figure>
 
-    (function() {
-        videojs('bg-video').Background();
-        setTimeout(function () {
-            videojs('bg-video').Background();
-        }, 100);
-    })();
+                </a>
+                <div class="store__item-info">
+                    'Throwback' LS t-shirt
+                </div>
+            </div>
 
-</script>
+            <div class="col-12 col-lg-6 store__item store__item--swap">
+                <a class="swap-on-hover" href="https://epr-music.com/electronic-purification/180-power-glove-playback-black-vinyl-dlp.html" target="_blank">
+                    <img class="swap-on-hover__front" src="dist/images/store/playback-vinyl.jpeg" />
+                    <img class="swap-on-hover__back" src="dist/images/store/playback-vinyl-back.jpeg" />
+                </a>
+                <div class="store__item-info">
+                    'Playback' Heavy black 180g vinyl<br/>
+                    Sturdy 350 gsm cardboard sleeve with black flood print inside<br/>
+                    Comes with embroidered Power Glove logo patch
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-6 store__item store__item--sold-out">
+                <a  href="https://powergloveaudio.bandcamp.com/album/playback" target="_blank">
+                    <img src="dist/images/store/playback-cassette.jpg" />
+                </a>
+                <div class="store__item-info">
+                'Playback' on red shell cassette and full colour J-card.
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-4 store__item store__item--swap">
+                <a class="swap-on-hover" href="https://www.invada.co.uk/products/pre-sale-power-glove-epii-mini-lp?_pos=2&_sid=bb9592c12&_ss=r" target="_blank">
+                    <img class="swap-on-hover__front" src="dist/images/store/ep2-vinyl.jpeg" />
+                    <img class="swap-on-hover__back" src="dist/images/store/ep2-vinyl-back.jpeg" />
+                </a>
+                <div class="store__item-info">
+                    EPII red vinyl + dl card
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-4 store__item store__item--sold-out store__item--swap">
+                <a class="swap-on-hover" href="#" target="_blank">
+                    <img class="swap-on-hover__front" src="dist/images/store/ep1-vinyl.jpeg" />
+                    <img class="swap-on-hover__back" src="dist/images/store/ep1-vinyl-back.jpeg" />
+                </a>
+                <div class="store__item-info">
+                    EPI vinyl
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-4 store__item store__item--repress">
+                <a href="https://www.invada.co.uk/products/power-glove-far-cry-3-blood-dragon-2018-repress-2-x-neon-pink-vinyl?_pos=4&_sid=bb9592c12&_ss=r" target="_blank">
+                    <img src="dist/images/store/blooddragon-vinyl.jpeg" />
+                </a>
+                <div class="store__item-info">
+                    Far Cry 3: Blood Dragon 2019 Repress<br/>
+                    [2 x Neon Pink Vinyl]
+                </div>
+            </div>
+
+            <div class="col-6 col-lg-4 store__item">
+                <a href="https://www.invada.co.uk/products/power-glove-trials-of-the-blood-dragon-original-video-game-soundtrack-2xlp-cd-cassette?_pos=3&_sid=bb9592c12&_ss=r" target="_blank">
+                    <img src="dist/images/store/trials-vinyl.jpeg" />
+                </a>
+                <div class="store__item-info">
+                    Trials Of The Blood Dragon: Original Video Game Soundtrack<br/>
+                    [2xLP / CD / Cassette]
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- END Store -->
+
+<!-- START Listen -->
+<section id="listen" class="section listen">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="heading-tag">Listen</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 col-lg-4 listen__cover listen__cover--soon">
+                <a href="https://ffm.to/throwback" target="_blank">
+                <img src="dist/images/listen/throwback-cover.jpg" />
+                </a>
+            </div>
+            <div class="col-6 col-lg-4 listen__cover">
+                <a href="https://ffm.to/pgplayback" target="_blank">
+                <img src="dist/images/listen/playback-cover.jpg" />
+                </a>
+            </div>
+
+            <div class="col-6 col-lg-4 listen__cover">
+                <a href="https://powergloveaudio.bandcamp.com/album/ep-ii" target="_blank">
+                <img src="dist/images/listen/ep2-cover.jpg" />
+                </a>
+            </div>
+            <div class="col-6 col-lg-4 listen__cover">
+                <a href="https://open.spotify.com/album/231L8hGyehsAzmrPrd785m" target="_blank">
+                <img src="dist/images/listen/blooddragon-cover.jpg" />
+                </a>
+            </div>
+            <div class="col-6 col-lg-4 listen__cover">
+                <a href="https://open.spotify.com/album/7Hm9OgkWKwULXKvNX6rqOO" target="_blank">
+                <img src="dist/images/listen/trials-cover.jpg" />
+                </a>
+            </div>
+            <div class="col-6 col-lg-4 listen__cover">
+                <a href="https://powergloveaudio.bandcamp.com/album/ep-1" target="_blank">
+                <img src="dist/images/listen/ep1-cover.jpg" />
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- END Listen -->
+
+<!-- START Watch -->
+<section id="watch" class="section watch">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="heading-tag">Watch</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 watch-video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/h89RKznjEgo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END Watch -->
+
+<!-- START Contact -->
+<section id="contact" class="section contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <h2 class="heading-tag">From the streets of 2043.</h2>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col-12">
+                <h3>Management: <a href="mailto:ryan@2plus2.net">ryan@2plus2.net</a></h3>
+                <h3>Enquiries: <a href="mailto:info@powergloveaudio.com">info@powergloveaudio.com</a></h3>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END Contact -->
+
+<footer class="footer">
+    <div class="container flex-it flex-it--row">
+        <div class="footer__social">
+            <a target="_blank" href="https://sptfy.com/powerglove">
+                <i class="fab fa-spotify"></i>
+            </a>
+            <a target="_blank" href="https://www.instagram.com/powergloveaudio">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a target="_blank" href="https://twitter.com/powergloveaudio">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a target="_blank" href="https://www.facebook.com/powergloveaudio">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a target="_blank" href="https://soundcloud.com/powerglove">
+                <i class="fab fa-soundcloud"></i>
+            </a>
+            <a target="_blank" href="https://powergloveaudio.bandcamp.com">
+                <i class="fab fa-bandcamp"></i>
+            </a>
+            <a target="_blank" href="https://www.youtube.com/c/powergloveaudio">
+                <i class="fab fa-youtube"></i>
+            </a>
+        </div>
+        <div class="footer__info">
+            &copy; Power Glove MMXIX. <a href="mailto:ryan@2plus2.net">Management 2+2</a>
+        </div>
+    </div>
+</footer>
+
+<script src="dist/js/site.min.js"></script>
 
 </body>
 </html>
